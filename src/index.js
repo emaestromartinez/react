@@ -1,7 +1,17 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+// import Root from "./pages/root";
+import "./index.css";
+import Root from "./pages/root/root-page";
+import ErrorPage from "./pages/error/error-page";
+import Contact from "./pages/contact/contact";
+import { router } from "./router";
 
 function Square(props) {
   return (
@@ -126,7 +136,11 @@ class Game extends React.Component {
 // ========================================
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<Game />);
+root.render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
 
 function calculateWinner(squares) {
   const lines = [
